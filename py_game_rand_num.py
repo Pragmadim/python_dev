@@ -2,36 +2,27 @@ import random
 
 
 def begin():
+    life = 5
     r_num = random.randint(1, 10)
-    p_num = int(input('Enter your number: '))
-    ch = (r_num, p_num)
-    if ch[0] == ch[1]:
-        print(ch[0])
-        print("You've won! Excellent!")
-        play_again = input("Do you want to play again? y/n")
-        if play_again == 'y' or play_again == 'Y':
-            begin()
-        elif play_again == 'n' or play_again == 'N':
-            print('Goodbye!')
-    elif ch[1] < ch[0]:
-        print(ch[0])
-        print("Your number is lower than it must be!")
-        begin()
-    elif ch[1] > ch[0]:
-        print(ch[0])
-        print("Your number is higher than it must be!")
-        begin()
+    while life >= 1:
+        p_num = int(input("Enter a number: "))
+        if r_num > p_num:
+            #print(r_num)
+            print("Your number is less. Try again!")
+            life = life - 1
+            print("You've lost one life. Only {} left!".format(life))
+        elif r_num < p_num:
+            #print(r_num)
+            print("Your number is bigger. Try again!")
+            life = life - 1
+            print("You've lost one life. Only {} left!".format(life))
+        elif r_num == p_num:
+            #print(r_num)
+            print("You're right! Thanks for playing!")
+            break
 
 
-def start():
-    gen = input('Print generate to begin playing! \n')
-    if gen == 'generate':
-        print('Success!')
-        begin()
-    else:
-        print('Fail!')
-        start()
+begin()
 
 
-print('Welcome to my first Python game! Guess random generated number from 1 to 10!')
-start()
+
